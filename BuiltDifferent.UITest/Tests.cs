@@ -25,6 +25,16 @@ namespace BuiltDifferent.UITest
         {
             app = AppInitializer.StartApp(platform);
         }
+
+        [Test]
+        public void WelcomeTextIsDisplayed()
+        {
+            AppResult[] results = app.WaitForElement(c => c.Marked("Welcome to Xamarin.Forms!"));
+            app.Screenshot("Welcome screen.");
+
+            Assert.IsTrue(results.Any());
+        }
+
         private void SaveScreenshot([CallerMemberName] string title = "", [CallerLineNumber] int lineNumber = -1)
         {
             FileInfo screenshot = app.Screenshot(title);
@@ -75,10 +85,6 @@ namespace BuiltDifferent.UITest
             Assert.IsTrue(app.Query(x => x.Id("message").Text("Please fill ALL of the fields")).Any());
         }
 
-
-
-
-
-
     }
 }
+

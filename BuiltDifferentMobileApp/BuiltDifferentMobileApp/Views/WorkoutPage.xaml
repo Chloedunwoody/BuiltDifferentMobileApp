@@ -5,6 +5,30 @@
              x:Class="BuiltDifferentMobileApp.Views.WorkoutPage"
              x:Name="TheWorkoutPage">
     <ContentPage.Content >
+        <StackLayout Margin="20">
+            <Label Text="{Binding ClientName, StringFormat='{0} Workouts '}" TextColor="Black" FontSize="Title" HorizontalTextAlignment="Center"/>
+            <Button Text="Manange Meals"
+                    Margin="90,0" 
+                    Padding="2"
+                CornerRadius="10"/>
+            <StackLayout Margin="30,0" BackgroundColor="LightGray">
+                <Label Text="Week____" HorizontalOptions="Center"/>
+                <FlexLayout BackgroundColor="LightGray">
+                    <!--to implement change color on clicked-->
+                    <Button Text="S" TextColor="Black" BackgroundColor="White" Margin="5" CornerRadius="100" Command="{Binding WeekdayCommand}"/>
+                    <Button Text="M" TextColor="Black" BackgroundColor="White" Margin="5" CornerRadius="100" Command="{Binding WeekdayCommand}"/>
+                    <Button Text="T" TextColor="Black" BackgroundColor="White" Margin="5" CornerRadius="100" Command="{Binding WeekdayCommand}"/>
+                    <Button Text="W" TextColor="Black" BackgroundColor="White" Margin="5" CornerRadius="100" Command="{Binding WeekdayCommand}"/>
+                    <Button Text="T" TextColor="Black" BackgroundColor="{StaticResource RedSecondary}" Margin="5" CornerRadius="100" Command="{Binding WeekdayCommand}"/>
+                    <Button Text="F" TextColor="Black" BackgroundColor="White" Margin="5" CornerRadius="100" Command="{Binding WeekdayCommand}"/>
+                    <Button Text="S" TextColor="Black" BackgroundColor="White" Margin="5" CornerRadius="100" Command="{Binding WeekdayCommand}"/>
+                </FlexLayout>
+            </StackLayout>
+
+            <!--InsertCommand when rerteieved mealS-->
+            <CollectionView 
+                ItemsSource="{Binding Workouts}"
+                            SelectionMode="None">
         <StackLayout Margin="5,0,5,0">
             <Label Margin="5,20,5,10" Text="Olivier's Workout Plan"  FontSize="35"
                    FontAttributes="Bold" HorizontalTextAlignment="Center"/>
@@ -17,8 +41,6 @@
             <CollectionView Margin="10"
                 ItemsSource="{Binding Workouts}"
                             >
-
-
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="15,15,15,15" >
@@ -27,7 +49,8 @@
                                     <Grid
                                 Padding="1">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition />
@@ -35,24 +58,26 @@
                                         <Label 
                                     Grid.Column="0" 
                                     Text="{Binding workoutName, StringFormat='{0} (Click to expand)'} "
+
                                     FontAttributes="Bold"
-                                    FontSize="Medium" />
-                                        <!-- ="{Binding Sets, StringFormat='Sets {0}'}" -->
+                                    FontSize="Small" />
                                         <Label 
                                     Grid.Column="1"
                                     HorizontalTextAlignment="End"
-                                    Text="{Binding sets, StringFormat='{0} Sets'} "
+                                            Margin="10,0,10,0"
+                                    Text="{Binding sets, StringFormat='{0} sets'}"
                                     FontAttributes="Bold"
-                                    FontSize="Medium"/>
-                                        <!-- ="{Binding Reps, StringFormat='Sets {0}'}" -->
+                                    FontSize="Small"/>
                                         <Label 
                                     Grid.Column="2"
                                     HorizontalTextAlignment="End"
-                                    Text="{Binding reps, StringFormat='{0} Reps'} "
+                                            Margin="10,0,10,0"
+                                    Text="{Binding reps, StringFormat='{0} reps '}"
+
                                     FontAttributes="Bold"
-                                    FontSize="Medium" />
+                                    FontSize="Small" />
                                         <Label 
-                                    Grid.Column="3"
+                                    Grid.Column="4"
                                     HorizontalTextAlignment="End"
                                     FontSize="Large"
                                     FontFamily="FAS" 
@@ -86,10 +111,6 @@
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-
-
-
-               
                 <CollectionView.EmptyView>
                     <StackLayout HorizontalOptions="Center">
                         <Image 
@@ -104,8 +125,17 @@
                     </StackLayout>
                 </CollectionView.EmptyView>
             </CollectionView>
-            
-        </StackLayout>
 
+            <StackLayout Margin="10">
+                <Button 
+                Text="Add New"
+                Grid.Column="3"
+                    Margin="90,0"
+                Command="{Binding AddCommand}"
+                Padding="2"
+                CornerRadius="10"
+                />
+          </StackLayout> 
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
