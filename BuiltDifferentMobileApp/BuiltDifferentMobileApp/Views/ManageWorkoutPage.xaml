@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="BuiltDifferentMobileApp.Views.ManageWorkoutPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Profile" Command="{Binding GoToProfile}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf2bd;"/>
+            </ToolbarItem.IconImageSource>        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <StackLayout Padding="50">
+                    <Label Text="{Binding Title}" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="Black"/>
+                    <Entry Text="{Binding WorkoutName}" Placeholder="Exercise Name" Keyboard="Text" BackgroundColor="White" />
+                    <Picker SelectedItem="{Binding WorkoutType}" ItemsSource="{Binding Types}" ItemDisplayBinding="{Binding Path=Name}"/>
+                    <Entry Text="{Binding Sets}" Placeholder="Sets" Keyboard="Numeric"/>
+                    <Entry Text="{Binding Reps}" Placeholder="Reps" Keyboard="Numeric"/>
+                    <Entry Text="{Binding Duration}" Placeholder="Duration (in minutes)" Keyboard="Numeric"/>
+                    <Entry Text="{Binding RestTime}" Placeholder="Rest Time(seconds)" Keyboard="Numeric"/>
+                    <Entry Text="{Binding Weight}" Placeholder="Weight(in lbs)" Keyboard="Numeric"/>
+                    <Entry Text="{Binding Description}" Placeholder="Description" Keyboard="Text"/>
+                    <Label Text="Date"/>
+                    <DatePicker MinimumDate="{x:Static sys:DateTime.Now}" Date="{Binding Date}" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding VideoLink}" Placeholder="Youtube Video Link" Keyboard="Text"/>
+                    <Button 
+                Text="Create/Edit"
+                Grid.Column="3"
+                    Margin="90,0"
+                Command="{Binding SaveCommand}"
+                Padding="2"
+                CornerRadius="10"
+                />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

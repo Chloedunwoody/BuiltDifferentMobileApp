@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace BuiltDifferentMobileApp.Views {
+namespace BuiltDifferentMobileApp.Views
+{
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage {
-        public LoginPage() {
+    public partial class MenuPage : TabbedPage
+    {
+        public MenuPage()
+        {
             InitializeComponent();
         }
     }
